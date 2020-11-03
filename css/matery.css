@@ -122,6 +122,10 @@ pre {
     tab-size: 4;
 }
 
+.code-area {
+    
+}
+
 .code-area::after {
     content: " ";
     position: absolute;
@@ -141,7 +145,7 @@ code {
     top: 13px !important;
     font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
     font-size: 0.91rem;
-    color: #f8c093;
+    color: #faeadc;
     background-color: #f8f8f8;
     border-radius: 2px;
 }
