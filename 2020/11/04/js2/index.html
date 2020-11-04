@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="JavaScript主要内容（一）, Chestnut">
+    <meta name="keywords" content="JavaScript主要内容（二）——变量&amp;操作符, Chestnut">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JavaScript主要内容（一） | Chestnut</title>
+    <title>JavaScript主要内容（二）——变量&amp;操作符 | Chestnut</title>
     <link rel="icon" type="image/png" href="/medias/mylogo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JavaScript主要内容（一）</h1>
+                    <h1 class="description center-align post-title">JavaScript主要内容（二）——变量&amp;操作符</h1>
                 </div>
             </div>
         </div>
@@ -430,67 +430,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>JavaScript是一种多范例的动态语言，具有类型和运算符，标准的内置对象和方法。</p>
-<p>JavaScript的类型主要为Number、String、Boolean、Function、Object、Symbol，以及undefined、null和一些内置的Error类型。其中Object中有一些特殊的对象，如Array、Date、RegExp。</p>
-<p>下面将介绍JavaScript中部分主要类型：</p>
-<hr>
-<h2 id="Numbers"><a href="#Numbers" class="headerlink" title="Numbers"></a><strong>Numbers</strong></h2><h3 id="精度"><a href="#精度" class="headerlink" title="精度"></a><strong>精度</strong></h3><p>在JavaScript中，数字为64位双精度形式，也就是说，没有整型数据（除了BigInt）。因此，有些数据看上去是整型，但事实上是一个浮点数。在实际中，整型数会被当成32位整型，一些实现甚至会以这种方式进行存储，直到需要实现一条对Number有效的指令，而不是对32位整型有效的指令。这对于位操作很重要。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">console.log(3 / 2);             //1.5
-console.log(Math.floor(3 / 2)); //1
-0.1 + 0.2 == 0.30000000000000004;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="算数操作-amp-Math"><a href="#算数操作-amp-Math" class="headerlink" title="算数操作&amp;Math"></a><strong>算数操作&amp;Math</strong></h3><p>Number支持标准的算数操作，包括加减模（或取余）算数等。之前用到的Math是一个内置对象，它提供更高级的算术函数和常量：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">Math.sin(3.5);
-var circumference = 2 * Math.PI * r;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="parseInt-amp-数字解析"><a href="#parseInt-amp-数字解析" class="headerlink" title="parseInt()&amp;数字解析"></a><strong>parseInt()&amp;数字解析</strong></h3><p>内置函数parseInt()可以将字符串解析为整数，函数的第二个参数即为转换的基数。在一些旧的浏览器中，“0”开头的字符串会被认为是8进制的数，不过目前已经不使用了。但是“0x”开头的字符串现在还是会被认为是16进制的数。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">parseInt('123', 10);    // 123
-parseInt('010', 10);    // 10
-parseInt('11', 2);      // 3
-parseInt('010');        // 8  目前不使用了
-parseInt('0x10');       // 16<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>类似地，parseFloat()可以将字符串转换为浮点数，但这个函数使用的一直是十进制。</p>
-<p>“+”操作符也可以用来把字符串转换成数字：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">+ '42';     // 42
-+ '010';    // 10
-+ '0X10';   // 16  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><strong>注：</strong> parseInt()和parseFloat()函数会一直解析字符串直到遇到一个无效的数字形式的字符，然后返回之前解析得到的数字。“+”操作符如果遇到字符串中有无效字符，则是简单地转化成NaN。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">parseInt('10.2abc');    // 10
-parseFloat('10.2abc');  // 10.2
-+ '10.2abc';            // NaN  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="特殊值：-NaN、Infinity、-Infinity"><a href="#特殊值：-NaN、Infinity、-Infinity" class="headerlink" title="特殊值： NaN、Infinity、 -Infinity"></a><strong>特殊值： NaN、Infinity、 -Infinity</strong></h3><p>在parseInt()中，如果字符串不是数字，则会返回一个特殊值NaN（Not a Number）。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">parseInt('hello', 10);  // NaN<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>如果将其作为任何算术运算的操作数，结果都是NaN。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">NaN + 5;    // NaN<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>也可以使用内置函数isNaN()测试是否为NaN。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">isNaN(NaN); // true<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Infinity和-Infinity和NaN可以使用内置函数isFinite()测试：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">1 / 0;  // Infinity
--1 / 0; // -Infinity
-isFinite(1 / 0);    // false
-isFinite(-Infinity);    // false
-isFinite(NaN);      // false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a><strong>Strings</strong></h2><p>JavaScript中的字符串是Unicode字符的序列。准确而言，它们是UTF-16 code unit的序列，每个code unit由一个16位数字表示，每个Unicode字符由1或2个code unit表示。</p>
-<p>如果要表示单个字符，只要使用只包含一个字符的字符串即可。</p>
-<p>在使用字符串时可以像使用对象，它提供了各种方法（methods）来操作或访问字符串信息。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">'hello'.length;     // 5
-'hello'.charAt(0);  // "h"
-'hello,world'.replace('world', 'mars');     // "hello, mars"
-'hello'.toUpperCase();  // "HELLO"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="其他类型"><a href="#其他类型" class="headerlink" title="其他类型"></a><strong>其他类型</strong></h2><h3 id="null-amp-undefined"><a href="#null-amp-undefined" class="headerlink" title="null&amp;undefined"></a><strong>null&amp;undefined</strong></h3><p>在JavaScript中对null和undefined进行了区分。</p>
-<ul>
-<li>null：特意表示nonvalue，并且只能通过null关键词访问</li>
-<li>undefined：表示未初始化的变量，事实上undefined是一个常量。</li>
-</ul>
-<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a><strong>Boolean</strong></h3><p>布尔类型由两种值：true和false。任何值都可以根据以下规则转化成一个布尔值：</p>
-<ol>
-<li>false，0， 空串（””），NaN，null和undefined都变成false;</li>
-<li>其余值都变成true</li>
-</ol>
-<p>上述转换可以通过Boolean()函数实现：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">Boolean('');    //false
-Boolean(234);   //true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>布尔类型支持与（&amp;&amp;）或（||）非（！）操作。</p>
+                <h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a><strong>Variables</strong></h2><p>在JavaScript中，新变量可以通过以下三个关键词进行声明：let, const, var</p>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a><strong>let</strong></h3><p><strong>let</strong> 声明了一个块级的变量。</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">let a;
+let name = 'Simon';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>下面举例说明用let声明的变量的作用域：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// myLetVariable is *not* visible out here
+
+for (let myLetVariable = 0; myLetVariable < 5; mtLetVariable++) &#123;
+    // myLetVariable is only visible in here
+&#125;
+
+// myLetVariable is *not* visible out here<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a><strong>const</strong></h3><p><strong>const</strong> 声明了一个无法改变值的变量，const变量同样是块级的。</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">const Pi = 3.14; // variable Pi is set
+Pi = 1; // will throw an error because you cannot change a constant variable.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="Var"><a href="#Var" class="headerlink" title="Var"></a><strong>Var</strong></h3><p><strong>var</strong> 是var最常用的声明关键字，它没有其余两种关键字的限制。用var声明的变量在函数域里是可用的。</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a;
+var name = 'Simon';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>下面举例说明用var声明的变量的作用域：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// myVarVariable *is* visible out here
+
+for (let myVarVariable = 0; myVarVariable < 5; mtVarVariable++) &#123;
+    // myVarVariable is visible to the whole function
+&#125;
+
+// myVarVariable *is* visible out here<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果声明了一个变量且没有赋值，那它的类型就是undefined。</p>
+<h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a><strong>Operators</strong></h2><h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a><strong>算术运算</strong></h3><p>JavaScript中数字运算符有+，-，*，/，%。</p>
+<p>赋值运算使用=。复合赋值语句有+=和-=，x += y相当于 x = x + y。</p>
+<p>++ 和 – 可用于自增和自减，这两个运算符可以作为前缀或者后缀运算符。</p>
+<p>+运算符也可用于字符串的连接：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">'hello' + 'world';  // "hello world"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果数字加上一个字符串，所有值都会先转换成字符串：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">'3' + 4 + 5;    // "345"
+3 + 4 + '5';    // "75"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>在一个值上加一个空串，可以把这个值变成对应的字符串</strong></p>
+<h3 id="比较运算"><a href="#比较运算" class="headerlink" title="比较运算"></a><strong>比较运算</strong></h3><p>比较运算可以使用&lt;，&gt;，&lt;=，&gt;= 实现。上述操作适用于数字和字符串。</p>
+<p>相等比较不太直接，因为双等号在不同类型比较时会进行类型强制转换：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">123 == '123';   // true
+1 == true;      // true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>为了避免类型强制转换，等价比较时使用三等号：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">123 === '123';   // false
+1 === true;      // false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>!= 和 !== 操作同理。</p>
 
             </div>
             <hr/>
@@ -516,7 +499,7 @@ Boolean(234);   //true<span aria-hidden="true" class="line-numbers-rows"><span><
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lemon-xxl.github.io/2020/11/04/js-type/">http://lemon-xxl.github.io/2020/11/04/js-type/</a>
+                    <a href="http://lemon-xxl.github.io/2020/11/04/js2/">http://lemon-xxl.github.io/2020/11/04/js2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -597,9 +580,10 @@ Boolean(234);   //true<span aria-hidden="true" class="line-numbers-rows"><span><
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/11/04/js2/">
                     <div class="card-image">
@@ -617,9 +601,59 @@ Boolean(234);   //true<span aria-hidden="true" class="line-numbers-rows"><span><
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-04
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/11/04/js-type/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JavaScript主要内容（一）">
+                        
+                        <span class="card-title">JavaScript主要内容（一）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            主要介绍JavaScript中的几种数据类型
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -639,47 +673,6 @@ Boolean(234);   //true<span aria-hidden="true" class="line-numbers-rows"><span><
                         <span class="chip bg-color">JavaScript</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/11/03/start/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="随记">
-                        
-                        <span class="card-title">随记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            随便记记
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-03
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%9A%8F%E8%AE%B0/" class="post-category">
-                                    随记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
