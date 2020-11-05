@@ -434,7 +434,69 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="样式-amp-注释"><a href="#样式-amp-注释" class="headerlink" title="样式&amp;注释"></a><strong>样式&amp;注释</strong></h2><h3 id="JSX-STYLE-样式"><a href="#JSX-STYLE-样式" class="headerlink" title="JSX STYLE 样式"></a><strong>JSX STYLE 样式</strong></h3><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> exampleStyle <span class="token operator">=</span> <span class="token punctuation">{</span>
+    background<span class="token punctuation">:</span> <span class="token string">"skyblue"</span><span class="token punctuation">,</span>
+    borderBottom<span class="token punctuation">:</span> <span class="token string">"1px solid red"</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1 style<span class="token operator">=</span><span class="token punctuation">{</span>exampleStyle<span class="token punctuation">}</span><span class="token operator">></span>这是个标题<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><p>class中，不可以存在多个class属性</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">'abc'</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"active"</span><span class="token punctuation">}</span> <span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>     <span class="token comment" spellcheck="true">// *Wrong*</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>style样式中，存在多个单词的属性，第二个单词开始首字母大写或者用单引号引起来</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> exampleStyle <span class="token operator">=</span> <span class="token punctuation">{</span>
+    background<span class="token punctuation">:</span> <span class="token string">"skyblue"</span><span class="token punctuation">,</span>
+    borderBottom<span class="token punctuation">:</span> <span class="token string">"1px solid red"</span><span class="token punctuation">,</span>
+    <span class="token string">'background-image'</span><span class="token punctuation">:</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>多个类共存的操作</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"abc "</span><span class="token operator">+</span>classStr<span class="token punctuation">}</span><span class="token operator">></span>这是个标题<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> classStr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'abc2'</span> <span class="token punctuation">,</span> <span class="token string">'bgRed'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token punctuation">{</span>classStr2<span class="token punctuation">}</span><span class="token operator">></span>这是个标题<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h3 id="JSX-注释"><a href="#JSX-注释" class="headerlink" title="JSX 注释"></a><strong>JSX 注释</strong></h3><p>必须在{}的表达式内书写</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token punctuation">{</span><span class="token comment" spellcheck="true">/*注释在这里*/</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span>h1 style<span class="token operator">=</span><span class="token punctuation">{</span>exampleStyle<span class="token punctuation">}</span><span class="token operator">></span>这是个标题<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a><strong>组件</strong></h2><h3 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a><strong>函数式组件</strong></h3><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Child</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> title <span class="token operator">=</span> <span class="token operator">&lt;</span>h2<span class="token operator">></span>副标题<span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+    <span class="token keyword">let</span> weather <span class="token operator">=</span> <span class="token string">'下雨'</span>
+    <span class="token comment" spellcheck="true">//条件判断</span>
+    <span class="token keyword">let</span> isGo <span class="token operator">=</span> weather<span class="token operator">==</span><span class="token string">'下雨'</span><span class="token operator">?</span><span class="token string">"不出门"</span><span class="token punctuation">:</span><span class="token string">"出门"</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span>h1<span class="token operator">></span>函数式组件<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+            <span class="token punctuation">{</span>title<span class="token punctuation">}</span>
+            <span class="token operator">&lt;</span>div<span class="token operator">></span>
+                是否出门？
+                <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token punctuation">{</span>isGo<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="类组件"><a href="#类组件" class="headerlink" title="类组件"></a><strong>类组件</strong></h3>
             </div>
             <hr/>
 
