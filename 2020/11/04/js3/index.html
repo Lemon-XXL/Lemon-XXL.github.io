@@ -29,8 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -469,7 +469,99 @@ obj[user] = prompt('what is its value?')<span aria-hidden="true" class="line-num
 <p>这两种方式语义上也是等价的，第二种方法的优点是，属性的​​名称以字符串形式提供，这意味着可以在运行时进行计算。但是，使用此方法会阻止应用某些JavaScript引擎和压缩程序优化。它也可以用来设置和获取保留字名称的属性：</p>
 <pre class="line-numbers language-JavaScript"><code class="language-JavaScript">obj.for = 'Simon';      // Syntax error, because 'for' is a reserved word
 obj['for'] = 'Simon';   // works fine<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a><strong>Arrays</strong></h2>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a><strong>Arrays</strong></h2><p>数组的创建方式：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a = new Array();
+a[0] = 'dog';
+a[1] = 'cat';
+a[2] = 'hen';
+a.length; // 3
+
+var a = ['dog', 'cat', 'hen'];
+a.length; // 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注：</strong> array.length不一定是数字中项的数量。<br><strong>数组的长度永远比最高索引多1</strong></p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a = ['dog', 'cat', 'hen'];
+a[100] = 'fox';
+a.length; // 101<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>如果查询一个不存在的数组下标，对应的数据类型为undefined：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">typeof a[90]; // undefined<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>遍历数组的方式：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// for loop
+for (var i = 0; i < a.length; i++) &#123;
+    // Do something with a[i]
+&#125;
+
+// for..of loop
+for (const currentValue of a) &#123;
+    // Do something with currentValue
+&#125;
+
+//forEach()
+['dog', 'cat', 'hen'].forEach(function(currentValue, index, array) &#123;
+    // Do something with currentValue or array[index]
+&#125;);
+
+// 如果使用for..in，遍历的不是数组元素，而是数组下标<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在数组中增加一个元素：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">a.push(item);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>数组也有很多方法（methods）：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a.toString()</td>
+<td>使用toString()返回一个字符串，每个元素以逗号分隔</td>
+</tr>
+<tr>
+<td>a.toLocaleString()</td>
+<td>使用toLocalString()返回一个字符串，每个元素以逗号分隔</td>
+</tr>
+<tr>
+<td>a.concat(item1[, item2[, …[, itemN]]])</td>
+<td>返回一个新加项之后的新数组</td>
+</tr>
+<tr>
+<td>a.join(sep)</td>
+<td>把数组转换成字符串，每个元素用sep进行分隔</td>
+</tr>
+<tr>
+<td>a.pop()</td>
+<td>移除并返回最后一项</td>
+</tr>
+<tr>
+<td>a.push(item1, …, itemN)</td>
+<td>在数组末尾新增项</td>
+</tr>
+<tr>
+<td>a.shift()</td>
+<td>移除并返回第一项</td>
+</tr>
+<tr>
+<td>a.unshift(item1[, item2[, …[, itemN]]])</td>
+<td>将项添加到数组开头</td>
+</tr>
+<tr>
+<td>a.slice(start[, end])</td>
+<td>返回一个子数组</td>
+</tr>
+<tr>
+<td>a.sort([cmpfn])</td>
+<td>使用一个可选的比较函数进行排序</td>
+</tr>
+<tr>
+<td>a.splice(start, delcount[, item1[, …[, itemN]]])</td>
+<td>通过删除一个部分并用更多项替换它来修改数组</td>
+</tr>
+<tr>
+<td>a.reverse()</td>
+<td>反转数组</td>
+</tr>
+</tbody></table>
+<p>参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript</a></p>
+
             </div>
             <hr/>
 
