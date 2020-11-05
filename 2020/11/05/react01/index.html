@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="JavaScript主要内容（三）——对象&amp;数组, Chestnut">
+    <meta name="keywords" content="react学习（一）——认识react、元素渲染、JSX, Chestnut">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JavaScript主要内容（三）——对象&amp;数组 | Chestnut</title>
+    <title>react学习（一）——认识react、元素渲染、JSX | Chestnut</title>
     <link rel="icon" type="image/png" href="/medias/mylogo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JavaScript主要内容（三）——对象&amp;数组</h1>
+                    <h1 class="description center-align post-title">react学习（一）——认识react、元素渲染、JSX</h1>
                 </div>
             </div>
         </div>
@@ -389,8 +389,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/react/">
+                                <span class="chip bg-color">react</span>
                             </a>
                         
                     </div>
@@ -414,7 +414,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-11-04
+                    2020-11-05
                 </div>
                 
 
@@ -430,137 +430,187 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a><strong>Objects</strong></h2><p>Object可以看成是name-value对的集合。name部分是一个字符串，value部分可以是任意值，包括更多的对象。</p>
-<p>以下是两种创建空对象的基本方式：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var obj = new Object();
+                <h2 id="认识React"><a href="#认识React" class="headerlink" title="认识React"></a><strong>认识React</strong></h2><p>React: 构建用户的JavaScript库，主要用于构建UI界面。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a><strong>特点</strong></h3><ol>
+<li>声明式设计</li>
+<li>高效，采用虚拟DOM实现DOM的渲染，最大限度减少DOM的操作</li>
+<li>灵活，可与其他库灵活搭配使用</li>
+<li>JSX，俗称在JavaScript中HTML，JavaScript语法的扩展</li>
+<li>组件化，模块化，代码易复用</li>
+<li>单向数据流，没有实现数据的双向绑定，数据-&gt;视图-&gt;事件-&gt;数据</li>
+</ol>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a><strong>创建项目</strong></h3><ol>
+<li>通过script引入使用，仅用于学习调试</li>
+</ol>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript"><script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><p>利用react脚手架，创建项目进行开发部署</p>
+<ol>
+<li><p>安装脚手架Creat React App</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g create-react-app<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>创建项目</p>
+<pre class="line-numbers language-bash"><code class="language-bash">create-react-app <span class="token operator">&lt;</span>项目名称<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a><strong>项目结构</strong></h3><ul>
+<li><strong>node_modules</strong> node相关的包</li>
+<li><strong>public</strong> 放置静态资源<ul>
+<li>index.html</li>
+<li>manifest.json PWA渐进式框架</li>
+<li>robots.txt 告诉爬虫不允许爬取的内容（防君子不防小人）</li>
+</ul>
+</li>
+<li><strong>src</strong> 源代码<ul>
+<li>index.js 核心文件：JSX语法，渲染页面</li>
+<li>index.css 根目录下的样式</li>
+<li>App.js 组件</li>
+<li>App.css 组件样式</li>
+</ul>
+</li>
+<li>.gitignore 忽视文件</li>
+<li>package-lock.json</li>
+<li>package.json</li>
+<li>README.md</li>
+</ul>
+<hr>
+<h2 id="React元素渲染"><a href="#React元素渲染" class="headerlink" title="React元素渲染"></a><strong>React元素渲染</strong></h2><h3 id="JSX创建元素"><a href="#JSX创建元素" class="headerlink" title="JSX创建元素"></a><strong>JSX创建元素</strong></h3><pre class="line-numbers language-JavaScript"><code class="language-JavaScript">//原本index.js中的语句，可以把<App />看成普通对象
+ReactDOM.render(<App />, document.getElementById('root'));
 
-var obj = &#123;&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>上面两种方式是语义上等价，第2中被称为文字语法，它也可以用来初始化一个对象的整体:</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var obj = &#123;
-    name: 'Carrot',
-    _for: 'Max',    // 'for' is a reserved word, use '_for' instead.
-    details: &#123;
-        color: 'orange',
-        size: 12
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>属性可以链式访问：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">obj.details.color;      // orange
-obj['details']['size']; // 12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>下面创建了一个对象原型（Person）和它的一个实例（you）：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">    this.name = name;
-    this.age = age;
+// 也可以修改成以下形式：
+let app = <App />   // react中的一个组件
+let root = document.getElementById('root')
+ReactDOM.render(app, root)
+
+// 也可以渲染一个元素
+let h1 = <h1>hello world</h1>
+ReactDOM.render(h1, root)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用JSX语法，可以创建一个JSX元素对象<br><strong>注：</strong> 一个JSX元素对象或者组件对象，只可以有一个根元素（根节点）</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">let h1 = <h1>hello world</h1><span>副标题</span>    // wrong
+
+let h1 = <h1>hello world<span>副标题</span></h1>    // true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="案例使用"><a href="#案例使用" class="headerlink" title="案例使用"></a><strong>案例使用</strong></h3><ul>
+<li><strong>实现页面时刻的显示</strong> 写在index.js中</li>
+</ul>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">function clock()&#123;
+    let time = new Date().toLocaleTimeString()
+    let element = (
+        <div>
+            <h1>现在的时间是&#123;time&#125;</h1>
+            <h2>副标题</h2>
+        </div>
+    )
+    let root = document.querySelector('#root')
+    reactDOM.render(element, root)
 &#125;
 
-// Define an object
-var you = new Person('You', 24);
-// We are creating a new person named "You" aged 24.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>对象被创建后，可以通过两种方式访问它的属性:</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// dot notation
-obj.name = 'Simon';
-var name = obj.name;
+clock()
 
-// bracket notation
-obj['name'] = 'Simon';
-var name = obj['name'];
-// can use a variable to define a key
-var user = prompt('what is your key?')
-obj[user] = prompt('what is its value?')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这两种方式语义上也是等价的，第二种方法的优点是，属性的​​名称以字符串形式提供，这意味着可以在运行时进行计算。但是，使用此方法会阻止应用某些JavaScript引擎和压缩程序优化。它也可以用来设置和获取保留字名称的属性：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">obj.for = 'Simon';      // Syntax error, because 'for' is a reserved word
-obj['for'] = 'Simon';   // works fine<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a><strong>Arrays</strong></h2><p>数组的创建方式：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a = new Array();
-a[0] = 'dog';
-a[1] = 'cat';
-a[2] = 'hen';
-a.length; // 3
-
-var a = ['dog', 'cat', 'hen'];
-a.length; // 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>注：</strong> array.length不一定是数字中项的数量。<br><strong>数组的长度永远比最高索引多1</strong></p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a = ['dog', 'cat', 'hen'];
-a[100] = 'fox';
-a.length; // 101<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>如果查询一个不存在的数组下标，对应的数据类型为undefined：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">typeof a[90]; // undefined<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>遍历数组的方式：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// for loop
-for (var i = 0; i < a.length; i++) &#123;
-    // Do something with a[i]
+setInterval(clock, 1000)    // 间隔函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>函数式组件实现</strong></li>
+</ul>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">function Clock(props)&#123;
+    return (
+        <div>
+            <h1>现在的时间是&#123;props.date.toLacaleTimeString()&#125;</h1>
+        </div>
+    )
 &#125;
 
-// for..of loop
-for (const currentValue of a) &#123;
-    // Do something with currentValue
+function run()&#123;
+    reactDOM.render(
+        <Clock date=&#123;new Date()&#125;/>,
+        document.querySelector('#root')
+    )
 &#125;
 
-//forEach()
-['dog', 'cat', 'hen'].forEach(function(currentValue, index, array) &#123;
-    // Do something with currentValue or array[index]
-&#125;);
+setInterval(run, 1000)    // 间隔函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="React-JSX"><a href="#React-JSX" class="headerlink" title="React JSX"></a><strong>React JSX</strong></h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h3><ol>
+<li>JSX执行更快，编译为JavaScript代码时进行优化</li>
+<li>类型更安全，编译过程如果出错就不能编译</li>
+<li>JSX编写模板简单快速（不和VUE比）</li>
+</ol>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h3><ol>
+<li>JSX必须要有根节点</li>
+<li>正常的普通HTML元素要小写，如果大写则默认为组件</li>
+</ol>
+<h3 id="JSX表达式"><a href="#JSX表达式" class="headerlink" title="JSX表达式"></a><strong>JSX表达式</strong></h3><ol>
+<li>由HTML元素构成</li>
+<li>中间如果需要插入变量用{}</li>
+<li>{}中间可以使用表达式</li>
+<li>{}中间表达式中可以使用JSX对象</li>
+<li>属性和HTML内容一样都是用{}插入内容</li>
+<li>一个{}中只有一个表达式，但可以嵌套</li>
+</ol>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a><strong>案例</strong></h3><pre class="line-numbers language-JavaScript"><code class="language-JavaScript">//常量运算
+let element1 = (
+    <div>
+        <h1>&#123;1+1&#125;</h1>
+    </div>
+)
 
-// 如果使用for..in，遍历的不是数组元素，而是数组下标<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在数组中增加一个元素：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">a.push(item);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>数组也有很多方法（methods）：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>a.toString()</td>
-<td>使用toString()返回一个字符串，每个元素以逗号分隔</td>
-</tr>
-<tr>
-<td>a.toLocaleString()</td>
-<td>使用toLocalString()返回一个字符串，每个元素以逗号分隔</td>
-</tr>
-<tr>
-<td>a.concat(item1[, item2[, …[, itemN]]])</td>
-<td>返回一个新加项之后的新数组</td>
-</tr>
-<tr>
-<td>a.join(sep)</td>
-<td>把数组转换成字符串，每个元素用sep进行分隔</td>
-</tr>
-<tr>
-<td>a.pop()</td>
-<td>移除并返回最后一项</td>
-</tr>
-<tr>
-<td>a.push(item1, …, itemN)</td>
-<td>在数组末尾新增项</td>
-</tr>
-<tr>
-<td>a.shift()</td>
-<td>移除并返回第一项</td>
-</tr>
-<tr>
-<td>a.unshift(item1[, item2[, …[, itemN]]])</td>
-<td>将项添加到数组开头</td>
-</tr>
-<tr>
-<td>a.slice(start[, end])</td>
-<td>返回一个子数组</td>
-</tr>
-<tr>
-<td>a.sort([cmpfn])</td>
-<td>使用一个可选的比较函数进行排序</td>
-</tr>
-<tr>
-<td>a.splice(start, delcount[, item1[, …[, itemN]]])</td>
-<td>通过删除一个部分并用更多项替换它来修改数组</td>
-</tr>
-<tr>
-<td>a.reverse()</td>
-<td>反转数组</td>
-</tr>
-</tbody></table>
-<p>参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript</a></p>
+// 变量运算
+let time = new Date().toLocaleTimeString()
+let str = '当前时间是：'
+let element2 = (
+    <div>
+        <h1>&#123;str+time&#125;</h1>
+    </div>
+)
+
+// 三元运算
+let man = '发热'
+let element3 = (
+    <div>
+        <h1>今天是否隔离</h1>
+        <h2>&#123;man=="发热"?"隔离":"居家"&#125;</h2>
+    </div>
+)
+
+// 增加元素对象
+let man = '发热'
+let element4 = (
+    <div>
+        <h1>今天是否隔离</h1>
+        <h2>&#123;man=="发热"?<button>隔离</button>:"居家"&#125;</h2>
+    </div>
+)
+
+// 增加复杂对象
+let man = '正常'
+let element5 =(
+    <div>
+        <span>横着躺</span>
+        <span>竖着躺</span>
+    </div>
+)
+let element6 = (
+    <div>
+        <h1>今天是否隔离</h1>
+        <h2>&#123;man=="发热"?<button>隔离</button>:element&#125;</h2>
+    </div>
+)
+
+// 增加样式
+/* css文件中：
+.bgRed &#123;
+    background-color: red
+&#125;*/
+let color = 'bgRed'
+let logo = '...'
+let element7 = (
+    <div className=&#123;color&#125;>
+        <img src=&#123;logo&#125;/>
+        红色的背景颜色
+    </div>
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>学习资料：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1T7411W72T?p=0">https://www.bilibili.com/video/BV1T7411W72T?p=0</a></p>
 
             </div>
             <hr/>
@@ -586,7 +636,7 @@ for (const currentValue of a) &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lemon-xxl.github.io/2020/11/04/js3/">http://lemon-xxl.github.io/2020/11/04/js3/</a>
+                    <a href="http://lemon-xxl.github.io/2020/11/05/react01/">http://lemon-xxl.github.io/2020/11/05/react01/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -624,8 +674,8 @@ for (const currentValue of a) &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/react/">
+                                    <span class="chip bg-color">react</span>
                                 </a>
                             
                         </div>
@@ -667,9 +717,10 @@ for (const currentValue of a) &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/11/05/react01/">
                     <div class="card-image">
@@ -687,9 +738,9 @@ for (const currentValue of a) &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -702,6 +753,7 @@ for (const currentValue of a) &#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -720,19 +772,19 @@ for (const currentValue of a) &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/11/04/js2/">
+                <a href="/2020/11/04/js3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="JavaScript主要内容（二）——变量&amp;操作符&amp;控制结构">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="JavaScript主要内容（三）——对象&amp;数组">
                         
-                        <span class="card-title">JavaScript主要内容（二）——变量&amp;操作符&amp;控制结构</span>
+                        <span class="card-title">JavaScript主要内容（三）——对象&amp;数组</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            主要介绍JavaScript中的变量、操作符和控制结构等
+                            主要介绍JavaScript中的对象和数组
                         
                     </div>
                     <div class="publish-info">
