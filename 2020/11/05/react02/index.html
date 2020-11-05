@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="JavaScript主要内容（二）——变量&amp;操作符&amp;控制结构, Chestnut">
+    <meta name="keywords" content="react学习（二）——样式、注释、组件、状态, Chestnut">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JavaScript主要内容（二）——变量&amp;操作符&amp;控制结构 | Chestnut</title>
+    <title>react学习（二）——样式、注释、组件、状态 | Chestnut</title>
     <link rel="icon" type="image/png" href="/medias/mylogo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JavaScript主要内容（二）——变量&amp;操作符&amp;控制结构</h1>
+                    <h1 class="description center-align post-title">react学习（二）——样式、注释、组件、状态</h1>
                 </div>
             </div>
         </div>
@@ -389,8 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/react/">
+                                <span class="chip bg-color">react</span>
+                            </a>
+                        
+                            <a href="/tags/JSX/">
+                                <span class="chip bg-color">JSX</span>
                             </a>
                         
                     </div>
@@ -414,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-11-04
+                    2020-11-05
                 </div>
                 
 
@@ -430,115 +434,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a><strong>Variables</strong></h2><p>在JavaScript中，新变量可以通过以下三个关键词进行声明：let, const, var</p>
-<h3 id="let"><a href="#let" class="headerlink" title="let"></a><strong>let</strong></h3><p><strong>let</strong> 声明了一个块级的变量。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">let a;
-let name = 'Simon';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>下面举例说明用let声明的变量的作用域：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// myLetVariable is *not* visible out here
-
-for (let myLetVariable = 0; myLetVariable < 5; mtLetVariable++) &#123;
-    // myLetVariable is only visible in here
-&#125;
-
-// myLetVariable is *not* visible out here<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="const"><a href="#const" class="headerlink" title="const"></a><strong>const</strong></h3><p><strong>const</strong> 声明了一个无法改变值的变量，const变量同样是块级的。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">const Pi = 3.14; // variable Pi is set
-Pi = 1; // will throw an error because you cannot change a constant variable.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="Var"><a href="#Var" class="headerlink" title="Var"></a><strong>Var</strong></h3><p><strong>var</strong> 是var最常用的声明关键字，它没有其余两种关键字的限制。用var声明的变量在函数域里是可用的。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a;
-var name = 'Simon';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>下面举例说明用var声明的变量的作用域：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// myVarVariable *is* visible out here
-
-for (let myVarVariable = 0; myVarVariable < 5; mtVarVariable++) &#123;
-    // myVarVariable is visible to the whole function
-&#125;
-
-// myVarVariable *is* visible out here<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>如果声明了一个变量且没有赋值，那它的类型就是undefined。</p>
-<h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a><strong>Operators</strong></h2><h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a><strong>算术运算</strong></h3><p>JavaScript中数字运算符有+，-，*，/，%。</p>
-<p>赋值运算使用=。复合赋值语句有+=和-=，x += y相当于 x = x + y。</p>
-<p>++ 和 – 可用于自增和自减，这两个运算符可以作为前缀或者后缀运算符。</p>
-<p>+运算符也可用于字符串的连接：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">'hello' + 'world';  // "hello world"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>如果数字加上一个字符串，所有值都会先转换成字符串：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">'3' + 4 + 5;    // "345"
-3 + 4 + '5';    // "75"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>在一个值上加一个空串，可以把这个值变成对应的字符串</strong></p>
-<h3 id="比较运算"><a href="#比较运算" class="headerlink" title="比较运算"></a><strong>比较运算</strong></h3><p>比较运算可以使用&lt;，&gt;，&lt;=，&gt;= 实现。上述操作适用于数字和字符串。</p>
-<p>相等比较不太直接，因为双等号在不同类型比较时会进行类型强制转换：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">123 == '123';   // true
-1 == true;      // true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>为了避免类型强制转换，等价比较时使用三等号：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">123 === '123';   // false
-1 === true;      // false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>!= 和 !== 操作同理。</p>
-<h2 id="Control-Structures"><a href="#Control-Structures" class="headerlink" title="Control Structures"></a><strong>Control Structures</strong></h2><h3 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a><strong>if-else</strong></h3><pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var name = 'kittens';
-if (name == 'puppies') &#123;
-    name += ' woof';
-&#125; else if (name == 'kittens') &#123;
-    name += ' meow';
-&#125; else &#123;
-    name += '!';
-&#125;
-name == 'kittens meow';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="while-amp-do-while"><a href="#while-amp-do-while" class="headerlink" title="while &amp; do-while"></a><strong>while &amp; do-while</strong></h3><pre class="line-numbers language-JavaScript"><code class="language-JavaScript">while (true) &#123;
-    // an infinite loop!
-&#125;
-
-var input;
-do &#123;
-    input = get_input();
-&#125; while (inputIsNotValid(input));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="for-amp-for…of-amp-for-in"><a href="#for-amp-for…of-amp-for-in" class="headerlink" title="for &amp; for…of &amp; for..in"></a><strong>for &amp; for…of &amp; for..in</strong></h3><pre class="line-numbers language-JavaScript"><code class="language-JavaScript">for (var i = 0; i < 5; i++) &#123;
-    // Will execute 5 times
-&#125;
-
-for (let value of array) &#123;
-    // do something with value
-&#125;
-
-for (let property in object) &#123;
-    // do something with object property
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="amp-amp-和-的短路逻辑"><a href="#amp-amp-和-的短路逻辑" class="headerlink" title="&amp;&amp; 和 || 的短路逻辑"></a><strong>&amp;&amp; 和 || 的短路逻辑</strong></h3><p>&amp;&amp;和||这两个运算符是否执行第二个运算数取决于第一个运算数的结果。</p>
-<p>这个特点可以用于在访问对象属性前检查其是否为空，或者进行值的缓存。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var name = o && o.getName();
-
-var name = cachedName || (cachedName = getName());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>JavaScript用于控制的三元算子：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var allowed = (age > 18) ? 'yes' : 'no';<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a><strong>switch</strong></h3><p>如果不加break语句，会继续执行下一个case中的语句。default语句是可选的，可以不写。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">switch (action) &#123;
-    case 'draw':
-        drawIt();
-        break;
-    case 'eat':
-        eatIt();
-        break;
-    default:
-        doNothing();
-&#125;
-
-switch (a) &#123;
-    case 1: // fallthrough
-    case 2:
-        eatIt();
-        break;
-    default:
-        doNothing();
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在switch和case部分可以使用表达式，表达式之间的比较使用的是===运算。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">switch (1 + 3) &#123;
-    case 2 + 2:
-        yay();
-        break;
-    default:
-        neverhappens();
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript</a></p>
-
+                
             </div>
             <hr/>
 
@@ -563,7 +459,7 @@ switch (a) &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lemon-xxl.github.io/2020/11/04/js2/">http://lemon-xxl.github.io/2020/11/04/js2/</a>
+                    <a href="http://lemon-xxl.github.io/2020/11/05/react02/">http://lemon-xxl.github.io/2020/11/05/react02/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -601,8 +497,12 @@ switch (a) &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/react/">
+                                    <span class="chip bg-color">react</span>
+                                </a>
+                            
+                                <a href="/tags/JSX/">
+                                    <span class="chip bg-color">JSX</span>
                                 </a>
                             
                         </div>
@@ -644,29 +544,30 @@ switch (a) &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/11/04/js3/">
+                <a href="/2020/11/05/react02/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="JavaScript主要内容（三）——对象&amp;数组">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="react学习（二）——样式、注释、组件、状态">
                         
-                        <span class="card-title">JavaScript主要内容（三）——对象&amp;数组</span>
+                        <span class="card-title">react学习（二）——样式、注释、组件、状态</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            主要介绍JavaScript中的对象和数组
+                            学习react中样式、注释、组件、状态相关内容
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -679,11 +580,16 @@ switch (a) &#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/react/">
+                        <span class="chip bg-color">react</span>
+                    </a>
+                    
+                    <a href="/tags/JSX/">
+                        <span class="chip bg-color">JSX</span>
                     </a>
                     
                 </div>
@@ -697,24 +603,24 @@ switch (a) &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/11/04/js-type/">
+                <a href="/2020/11/05/react01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JavaScript主要内容（一）——数据类型">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="react学习（一）——认识react、元素渲染、JSX">
                         
-                        <span class="card-title">JavaScript主要内容（一）——数据类型</span>
+                        <span class="card-title">react学习（一）——认识react、元素渲染、JSX</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            主要介绍JavaScript中的几种数据类型
+                            初步认识react，学习元素渲染、JSX相关内容
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-05
                             </span>
                         <span class="publish-author">
                             
@@ -731,8 +637,12 @@ switch (a) &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/react/">
+                        <span class="chip bg-color">react</span>
+                    </a>
+                    
+                    <a href="/tags/JSX/">
+                        <span class="chip bg-color">JSX</span>
                     </a>
                     
                 </div>
