@@ -29,8 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -481,21 +481,21 @@
 <li>README.md</li>
 </ul>
 <hr>
-<h2 id="React元素渲染"><a href="#React元素渲染" class="headerlink" title="React元素渲染"></a><strong>React元素渲染</strong></h2><h3 id="JSX创建元素"><a href="#JSX创建元素" class="headerlink" title="JSX创建元素"></a><strong>JSX创建元素</strong></h3><pre class="line-numbers language-JSX"><code class="language-JSX">//原本index.js中的语句，可以把<App />看成普通对象
-ReactDOM.render(<App />, document.getElementById('root'));
+<h2 id="React元素渲染"><a href="#React元素渲染" class="headerlink" title="React元素渲染"></a><strong>React元素渲染</strong></h2><h3 id="JSX创建元素"><a href="#JSX创建元素" class="headerlink" title="JSX创建元素"></a><strong>JSX创建元素</strong></h3><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//原本index.js中的语句，可以把&lt;App />看成普通对象</span>
+ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 也可以修改成以下形式：
-let app = <App />   // react中的一个组件
-let root = document.getElementById('root')
-ReactDOM.render(app, root)
+<span class="token comment" spellcheck="true">// 也可以修改成以下形式：</span>
+<span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span>   <span class="token comment" spellcheck="true">// react中的一个组件</span>
+<span class="token keyword">let</span> root <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span>
+ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>app<span class="token punctuation">,</span> root<span class="token punctuation">)</span>
 
-// 也可以渲染一个元素
-let h1 = <h1>hello world</h1>
-ReactDOM.render(h1, root)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// 也可以渲染一个元素</span>
+<span class="token keyword">let</span> h1 <span class="token operator">=</span> <span class="token operator">&lt;</span>h1<span class="token operator">></span>hello world<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>h1<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用JSX语法，可以创建一个JSX元素对象<br><strong>注：</strong> 一个JSX元素对象或者组件对象，只可以有一个根元素（根节点）</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">let h1 = <h1>hello world</h1><span>副标题</span>    // wrong
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> h1 <span class="token operator">=</span> <span class="token operator">&lt;</span>h1<span class="token operator">></span>hello world<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span>副标题<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>    <span class="token comment" spellcheck="true">// wrong</span>
 
-let h1 = <h1>hello world<span>副标题</span></h1>    // true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">let</span> h1 <span class="token operator">=</span> <span class="token operator">&lt;</span>h1<span class="token operator">></span>hello world<span class="token operator">&lt;</span>span<span class="token operator">></span>副标题<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>    <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="案例使用"><a href="#案例使用" class="headerlink" title="案例使用"></a><strong>案例使用</strong></h3><ul>
 <li><strong>实现页面时刻的显示</strong> 写在index.js中</li>
 </ul>
