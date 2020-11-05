@@ -432,77 +432,77 @@
             <div id="articleContent">
                 <h2 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a><strong>Objects</strong></h2><p>Object可以看成是name-value对的集合。name部分是一个字符串，value部分可以是任意值，包括更多的对象。</p>
 <p>以下是两种创建空对象的基本方式：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var obj = new Object();
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-var obj = &#123;&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>上面两种方式是语义上等价，第2中被称为文字语法，它也可以用来初始化一个对象的整体:</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var obj = &#123;
-    name: 'Carrot',
-    _for: 'Max',    // 'for' is a reserved word, use '_for' instead.
-    details: &#123;
-        color: 'orange',
-        size: 12
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    name<span class="token punctuation">:</span> <span class="token string">'Carrot'</span><span class="token punctuation">,</span>
+    _for<span class="token punctuation">:</span> <span class="token string">'Max'</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">// 'for' is a reserved word, use '_for' instead.</span>
+    details<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        color<span class="token punctuation">:</span> <span class="token string">'orange'</span><span class="token punctuation">,</span>
+        size<span class="token punctuation">:</span> <span class="token number">12</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>属性可以链式访问：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">obj.details.color;      // orange
-obj['details']['size']; // 12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">obj<span class="token punctuation">.</span>details<span class="token punctuation">.</span>color<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// orange</span>
+obj<span class="token punctuation">[</span><span class="token string">'details'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'size'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 12</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>下面创建了一个对象原型（Person）和它的一个实例（you）：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">    this.name = name;
-    this.age = age;
-&#125;
+<pre class="line-numbers language-javascript"><code class="language-javascript">    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-// Define an object
-var you = new Person('You', 24);
-// We are creating a new person named "You" aged 24.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// Define an object</span>
+<span class="token keyword">var</span> you <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'You'</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// We are creating a new person named "You" aged 24.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对象被创建后，可以通过两种方式访问它的属性:</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// dot notation
-obj.name = 'Simon';
-var name = obj.name;
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// dot notation</span>
+obj<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'Simon'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> name <span class="token operator">=</span> obj<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
 
-// bracket notation
-obj['name'] = 'Simon';
-var name = obj['name'];
-// can use a variable to define a key
-var user = prompt('what is your key?')
-obj[user] = prompt('what is its value?')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// bracket notation</span>
+obj<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Simon'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> name <span class="token operator">=</span> obj<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// can use a variable to define a key</span>
+<span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token function">prompt</span><span class="token punctuation">(</span><span class="token string">'what is your key?'</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">[</span>user<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">prompt</span><span class="token punctuation">(</span><span class="token string">'what is its value?'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这两种方式语义上也是等价的，第二种方法的优点是，属性的​​名称以字符串形式提供，这意味着可以在运行时进行计算。但是，使用此方法会阻止应用某些JavaScript引擎和压缩程序优化。它也可以用来设置和获取保留字名称的属性：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">obj.for = 'Simon';      // Syntax error, because 'for' is a reserved word
-obj['for'] = 'Simon';   // works fine<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">obj<span class="token punctuation">.</span><span class="token keyword">for</span> <span class="token operator">=</span> <span class="token string">'Simon'</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// Syntax error, because 'for' is a reserved word</span>
+obj<span class="token punctuation">[</span><span class="token string">'for'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Simon'</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// works fine</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a><strong>Arrays</strong></h2><p>数组的创建方式：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a = new Array();
-a[0] = 'dog';
-a[1] = 'cat';
-a[2] = 'hen';
-a.length; // 3
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'dog'</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'cat'</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'hen'</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
 
-var a = ['dog', 'cat', 'hen'];
-a.length; // 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'dog'</span><span class="token punctuation">,</span> <span class="token string">'cat'</span><span class="token punctuation">,</span> <span class="token string">'hen'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>注：</strong> array.length不一定是数字中项的数量。<br><strong>数组的长度永远比最高索引多1</strong></p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">var a = ['dog', 'cat', 'hen'];
-a[100] = 'fox';
-a.length; // 101<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'dog'</span><span class="token punctuation">,</span> <span class="token string">'cat'</span><span class="token punctuation">,</span> <span class="token string">'hen'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'fox'</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 101</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>如果查询一个不存在的数组下标，对应的数据类型为undefined：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">typeof a[90]; // undefined<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">typeof</span> a<span class="token punctuation">[</span><span class="token number">90</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>遍历数组的方式：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">// for loop
-for (var i = 0; i < a.length; i++) &#123;
-    // Do something with a[i]
-&#125;
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// for loop</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Do something with a[i]</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-// for..of loop
-for (const currentValue of a) &#123;
-    // Do something with currentValue
-&#125;
+<span class="token comment" spellcheck="true">// for..of loop</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> currentValue <span class="token keyword">of</span> a<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Do something with currentValue</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-//forEach()
-['dog', 'cat', 'hen'].forEach(function(currentValue, index, array) &#123;
-    // Do something with currentValue or array[index]
-&#125;);
+<span class="token comment" spellcheck="true">//forEach()</span>
+<span class="token punctuation">[</span><span class="token string">'dog'</span><span class="token punctuation">,</span> <span class="token string">'cat'</span><span class="token punctuation">,</span> <span class="token string">'hen'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>currentValue<span class="token punctuation">,</span> index<span class="token punctuation">,</span> array<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Do something with currentValue or array[index]</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 如果使用for..in，遍历的不是数组元素，而是数组下标<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// 如果使用for..in，遍历的不是数组元素，而是数组下标</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在数组中增加一个元素：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">a.push(item);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">a<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>数组也有很多方法（methods）：</p>
 <table>
 <thead>

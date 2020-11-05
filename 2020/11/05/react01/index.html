@@ -499,40 +499,40 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <h3 id="案例使用"><a href="#案例使用" class="headerlink" title="案例使用"></a><strong>案例使用</strong></h3><ul>
 <li><strong>实现页面时刻的显示</strong> 写在index.js中</li>
 </ul>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">function clock()&#123;
-    let time = new Date().toLocaleTimeString()
-    let element = (
-        <div>
-            <h1>现在的时间是&#123;time&#125;</h1>
-            <h2>副标题</h2>
-        </div>
-    )
-    let root = document.querySelector('#root')
-    reactDOM.render(element, root)
-&#125;
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">clock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span>h1<span class="token operator">></span>现在的时间是<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>time<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+            <span class="token operator">&lt;</span>h2<span class="token operator">></span>副标题<span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">let</span> root <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#root'</span><span class="token punctuation">)</span>
+    reactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> root<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-clock()
+<span class="token function">clock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-setInterval(clock, 1000)    // 间隔函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">setInterval</span><span class="token punctuation">(</span>clock<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// 间隔函数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>函数式组件实现</strong></li>
 </ul>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">function Clock(props)&#123;
-    return (
-        <div>
-            <h1>现在的时间是&#123;props.date.toLacaleTimeString()&#125;</h1>
-        </div>
-    )
-&#125;
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Clock</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span>h1<span class="token operator">></span>现在的时间是<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>props<span class="token punctuation">.</span>date<span class="token punctuation">.</span><span class="token function">toLacaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-function run()&#123;
-    reactDOM.render(
-        <Clock date=&#123;new Date()&#125;/>,
-        document.querySelector('#root')
-    )
-&#125;
+<span class="token keyword">function</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    reactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>Clock date<span class="token operator">=</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span>
+        document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#root'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-setInterval(run, 1000)    // 间隔函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">setInterval</span><span class="token punctuation">(</span>run<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// 间隔函数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="React-JSX"><a href="#React-JSX" class="headerlink" title="React JSX"></a><strong>React JSX</strong></h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h3><ol>
 <li>JSX执行更快，编译为JavaScript代码时进行优化</li>
@@ -551,68 +551,68 @@ setInterval(run, 1000)    // 间隔函数<span aria-hidden="true" class="line-nu
 <li>属性和HTML内容一样都是用{}插入内容</li>
 <li>一个{}中只有一个表达式，但可以嵌套</li>
 </ol>
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a><strong>案例</strong></h3><pre class="line-numbers language-JavaScript"><code class="language-JavaScript">//常量运算
-let element1 = (
-    <div>
-        <h1>&#123;1+1&#125;</h1>
-    </div>
-)
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a><strong>案例</strong></h3><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//常量运算</span>
+<span class="token keyword">let</span> element1 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1<span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">1</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
 
-// 变量运算
-let time = new Date().toLocaleTimeString()
-let str = '当前时间是：'
-let element2 = (
-    <div>
-        <h1>&#123;str+time&#125;</h1>
-    </div>
-)
+<span class="token comment" spellcheck="true">// 变量运算</span>
+<span class="token keyword">let</span> time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'当前时间是：'</span>
+<span class="token keyword">let</span> element2 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1<span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>str<span class="token operator">+</span>time<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
 
-// 三元运算
-let man = '发热'
-let element3 = (
-    <div>
-        <h1>今天是否隔离</h1>
-        <h2>&#123;man=="发热"?"隔离":"居家"&#125;</h2>
-    </div>
-)
+<span class="token comment" spellcheck="true">// 三元运算</span>
+<span class="token keyword">let</span> man <span class="token operator">=</span> <span class="token string">'发热'</span>
+<span class="token keyword">let</span> element3 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1<span class="token operator">></span>今天是否隔离<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h2<span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>man<span class="token operator">==</span><span class="token string">"发热"</span><span class="token operator">?</span><span class="token string">"隔离"</span><span class="token punctuation">:</span><span class="token string">"居家"</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
 
-// 增加元素对象
-let man = '发热'
-let element4 = (
-    <div>
-        <h1>今天是否隔离</h1>
-        <h2>&#123;man=="发热"?<button>隔离</button>:"居家"&#125;</h2>
-    </div>
-)
+<span class="token comment" spellcheck="true">// 增加元素对象</span>
+<span class="token keyword">let</span> man <span class="token operator">=</span> <span class="token string">'发热'</span>
+<span class="token keyword">let</span> element4 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1<span class="token operator">></span>今天是否隔离<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h2<span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>man<span class="token operator">==</span><span class="token string">"发热"</span><span class="token operator">?</span><span class="token operator">&lt;</span>button<span class="token operator">></span>隔离<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token punctuation">:</span><span class="token string">"居家"</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
 
-// 增加复杂对象
-let man = '正常'
-let element5 =(
-    <div>
-        <span>横着躺</span>
-        <span>竖着躺</span>
-    </div>
-)
-let element6 = (
-    <div>
-        <h1>今天是否隔离</h1>
-        <h2>&#123;man=="发热"?<button>隔离</button>:element&#125;</h2>
-    </div>
-)
+<span class="token comment" spellcheck="true">// 增加复杂对象</span>
+<span class="token keyword">let</span> man <span class="token operator">=</span> <span class="token string">'正常'</span>
+<span class="token keyword">let</span> element5 <span class="token operator">=</span><span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span>横着躺<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span>竖着躺<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
+<span class="token keyword">let</span> element6 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1<span class="token operator">></span>今天是否隔离<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h2<span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>man<span class="token operator">==</span><span class="token string">"发热"</span><span class="token operator">?</span><span class="token operator">&lt;</span>button<span class="token operator">></span>隔离<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token punctuation">:</span>element<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
 
-// 增加样式
-/* css文件中：
-.bgRed &#123;
+<span class="token comment" spellcheck="true">// 增加样式</span>
+<span class="token comment" spellcheck="true">/* css文件中：
+.bgRed &amp;#123;
     background-color: red
-&#125;*/
-let color = 'bgRed'
-let logo = '...'
-let element7 = (
-    <div className=&#123;color&#125;>
-        <img src=&#123;logo&#125;/>
+&amp;#125;*/</span>
+<span class="token keyword">let</span> color <span class="token operator">=</span> <span class="token string">'bgRed'</span>
+<span class="token keyword">let</span> logo <span class="token operator">=</span> <span class="token string">'...'</span>
+<span class="token keyword">let</span> element7 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>color<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>logo<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">/</span><span class="token operator">></span>
         红色的背景颜色
-    </div>
-)
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>学习资料：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1T7411W72T?p=0">https://www.bilibili.com/video/BV1T7411W72T?p=0</a></p>
 
