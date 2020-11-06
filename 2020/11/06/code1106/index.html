@@ -436,32 +436,32 @@
             <div id="articleContent">
                 <h3 id="2020-11-06"><a href="#2020-11-06" class="headerlink" title="2020.11.06"></a><strong>2020.11.06</strong></h3><ul>
 <li><p>计算一个数的二进制表示中1的个数</p>
-<pre class="line-numbers language-c++"><code class="language-c++">// 暴力，在十进制转二进制的时候统计
-int bitCount(int n){
-    int count = 0;
-    while(n){
-        count += (n % 2);
-        n /= 2;
-    }
-    return count;
-}
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 暴力，在十进制转二进制的时候统计</span>
+<span class="token keyword">int</span> <span class="token function">bitCount</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        count <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        n <span class="token operator">/</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-//循环次数为二进制表示中1的数目
-int bitCount(int n) {
-    int count = 0;
-    while (n) {
-        n &= (n - 1); // 清除最低位的1
-        count++;
-    }
-    return count;
-}
+<span class="token comment" spellcheck="true">//循环次数为二进制表示中1的数目</span>
+<span class="token keyword">int</span> <span class="token function">bitCount</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        n <span class="token operator">&amp;</span><span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 清除最低位的1</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-//递推预处理
-//bitCount[i] = bitCount[i>>1] + (i&1)
-vector<int> bitCount[10001];
-bitCount[0] = 0;
-for(int i=1; i<10001; i++)
-    bitCount[i] = bitCount[i>>1]+ (i & 1);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">//递推预处理</span>
+<span class="token comment" spellcheck="true">//bitCount[i] = bitCount[i>>1] + (i&amp;1)</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> bitCount<span class="token punctuation">[</span><span class="token number">10001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+bitCount<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">10001</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    bitCount<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> bitCount<span class="token punctuation">[</span>i<span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>sort库函数的使用</p>
 <ul>
@@ -479,14 +479,14 @@ for(int i=1; i<10001; i++)
 <p>因此可以得到动态规划转移方程：$f(i)=max{f(i-1)+a_i, a_i}$</p>
 <p>可以使用一个$f$数组保存$f(i)$的值，并使用循环找出数组中最大的值。这种方法对应的时间复杂度为$O(n)$，空间复杂度为$O(n)$。</p>
 <p>但是$f(i)$只和$f(i-1)$有关，可以用一个变量保存前一项的值。空间复杂度可以降到$O(1)$。</p>
-<pre class="line-numbers language-c++"><code class="language-c++">int maxSubArray(vector<int>& nums) {
-    int pre = 0, maxAns = nums[0];
-    for(const auto &x: nums) {
-        pre = max(pre + x, x);
-        maxAns = (maxAns, pre);
-    }
-    return maxAns;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">maxSubArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> pre <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> maxAns <span class="token operator">=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>x<span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pre <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>pre <span class="token operator">+</span> x<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        maxAns <span class="token operator">=</span> <span class="token punctuation">(</span>maxAns<span class="token punctuation">,</span> pre<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> maxAns<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>分治算法</p>
 </li>
