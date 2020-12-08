@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="css学习笔记, Chestnut">
+    <meta name="keywords" content="css学习笔记01 —— CSS如何工作, Chestnut">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>css学习笔记 | Chestnut</title>
+    <title>css学习笔记01 —— CSS如何工作 | Chestnut</title>
     <link rel="icon" type="image/png" href="/medias/mylogo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">css学习笔记</h1>
+                    <h1 class="description center-align post-title">css学习笔记01 —— CSS如何工作</h1>
                 </div>
             </div>
         </div>
@@ -430,7 +430,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="CSS如何工作"><a href="#CSS如何工作" class="headerlink" title="CSS如何工作"></a><strong>CSS如何工作</strong></h3><p>当浏览器显示一个文档的时候，一定会把文档内容和样式信息结合起来。<br>浏览器加载web页面的简略过程：</p>
+                <h3 id="CSS工作过程"><a href="#CSS工作过程" class="headerlink" title="CSS工作过程"></a><strong>CSS工作过程</strong></h3><p>当浏览器显示一个文档的时候，一定会把文档内容和样式信息结合起来。<br>浏览器加载web页面的简略过程：</p>
 <ol>
 <li>浏览器加载HTML</li>
 <li>浏览器把HTML转化为DOM(<em>Document Object Model</em>)</li>
@@ -439,7 +439,7 @@
 <li>在应用规则之后，渲染树会被放到对应的地方</li>
 <li>显示在屏幕上</li>
 </ol>
-<p><img src="https://media.prod.mdn.mozit.cloud/attachments/2015/10/14/11781/ab96f980498d7c46fe26f6df06b9acfc/rendering.svg" alt="CSS如何工作"><br><img src="./../media/css-rendering.png" alt="CSS如何工作"></p>
+<p><img src="https://media.prod.mdn.mozit.cloud/attachments/2015/10/14/11781/ab96f980498d7c46fe26f6df06b9acfc/rendering.svg" alt="CSS如何工作"></p>
 <h3 id="关于DOM"><a href="#关于DOM" class="headerlink" title="关于DOM"></a><strong>关于DOM</strong></h3><p>DOM是树状结构，标记语言里的每个元素、属性、文本块在树状结构里都是一个DOM节点。</p>
 <p>以下面的HTML代码为例：</p>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
@@ -462,6 +462,16 @@
   <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid black<span class="token punctuation">;</span>
   <span class="token property">background-color</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="当浏览器遇到无法识别的CSS"><a href="#当浏览器遇到无法识别的CSS" class="headerlink" title="当浏览器遇到无法识别的CSS"></a><strong>当浏览器遇到无法识别的CSS</strong></h3><ul>
+<li>遇到无法识别的属性或属性值，忽略当前的声明，移动到下一条声明</li>
+<li>遇到无法识别的选择器，忽略当前的整个规则，移动到下一个选择器</li>
+</ul>
+<p><strong>例子：</strong></p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span> </span><span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">500</span>px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">50</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>一些旧的浏览器不支持calc()，则会忽略第二条声明，采用像素形式。<br>而新的浏览器会解析像素形式的声明，但随后便会把它重写为使用calc()的那条。</p>
 
             </div>
             <hr/>
@@ -577,9 +587,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="css学习笔记">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="css学习笔记01 —— CSS如何工作">
                         
-                        <span class="card-title">css学习笔记</span>
+                        <span class="card-title">css学习笔记01 —— CSS如何工作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
