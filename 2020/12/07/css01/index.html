@@ -439,8 +439,30 @@
 <li>在应用规则之后，渲染树会被放到对应的地方</li>
 <li>显示在屏幕上</li>
 </ol>
-<p><img src="../media/css-rendering.svg" alt="avatar"></p>
-<h3 id="关于DOM"><a href="#关于DOM" class="headerlink" title="关于DOM"></a><strong>关于DOM</strong></h3>
+<p><img src="./../media/css-rendering.svg" alt="CSS如何工作"></p>
+<h3 id="关于DOM"><a href="#关于DOM" class="headerlink" title="关于DOM"></a><strong>关于DOM</strong></h3><p>DOM是树状结构，标记语言里的每个元素、属性、文本块在树状结构里都是一个DOM节点。</p>
+<p>以下面的HTML代码为例：</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  Let's use:
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Cascading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Style<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Sheets<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在DOM中，&lt;p&gt;元素对应的节点就是父节点，它的子节点就是一个文本节点和三个与&lt;span&gt;元素对应的节点。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">P
+├─ <span class="token string">"Let's use:"</span>
+├─ SPAN
+<span class="token operator">|</span>  └─ <span class="token string">"Cascading"</span>
+├─ SPAN
+<span class="token operator">|</span>  └─ <span class="token string">"Style"</span>
+└─ SPAN
+   └─ <span class="token string">"Sheets"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将CSS应用到DOM</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">span </span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid black<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
