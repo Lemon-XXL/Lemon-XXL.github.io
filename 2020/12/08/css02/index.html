@@ -460,6 +460,7 @@
 <p><strong>小疑问</strong>：natural value 和 default value的区别</p>
 <p>下面的代码中，第一行是default link color，保留了link原本的颜色，和第三行的initial相同；第四行unset，是设置了属性的natural value，它和第二行的inherit相同，也就意味着这个属性是自然继承的。</p>
 <p>（其实link的CSS是有额外说明的，所以在不重写的情况下，也不会继承父元素的属性值</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Lemon-XXL/images/img/3N48]04EK[" alt="关于link的inherit">17E4LW9J`9X9.png)</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector">body </span><span class="token punctuation">{</span>
     <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -481,28 +482,6 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-class-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Reset the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span> 
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-class-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Unset the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul class="my-list">
-    <li>Default <a href="#">link</a> color</li>
-    <li class="my-class-1">Inherit the <a href="#">link</a> color</li>
-    <li class="my-class-2">Reset the <a href="#">link</a> color</li> 
-    <li class="my-class-3">Unset the <a href="#">link</a> color</li>
-</ul>
-
-<style>
-.my-list {
-    color: green;
-}
-.my-class-1 a {
-    color: inherit;
-}
-.my-class-2 a {
-    color: initial;
-}
-.my-class-3 a {
-    color: unset;
-}
-</style>
-
 <p>CSS的速记属性<strong>all</strong></p>
 
             </div>
