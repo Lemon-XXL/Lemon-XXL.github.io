@@ -414,7 +414,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-08
+                    2020-12-10
                 </div>
                 
 
@@ -484,7 +484,113 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-class-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Reset the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span> 
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-class-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Unset the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>CSS的速记属性<strong>all</strong></p>
+<h4 id="all"><a href="#all" class="headerlink" title="all"></a><strong>all</strong></h4><p>CSS的速记属性<strong>all</strong>可以用来把上述inheritance values(<strong>inherit</strong>, <strong>initial</strong>, <strong>unset</strong> or <strong>revert</strong>)一次性应用到几乎所有属性上。</p>
+<p>这种方式可以很方便地撤销之前所设置的样式：</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.fix-this</span> </span><span class="token punctuation">{</span>
+    <span class="token property">all</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="理解cascade"><a href="#理解cascade" class="headerlink" title="理解cascade"></a><strong>理解cascade</strong></h3><p>cascade在判断应用哪条CSS规则时要考虑到以下三个因素，他们的的重要性依次递增，后者可以无视前者的影响：</p>
+<ul>
+<li><strong>Source order</strong></li>
+<li><strong>Specificity</strong></li>
+<li><strong>Importance</strong></li>
+</ul>
+<h4 id="Source-order"><a href="#Source-order" class="headerlink" title="Source order"></a><strong>Source order</strong></h4><p>如果有多条权重相同的CSS规则，在源代码位置偏后的生效。</p>
+<h4 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a><strong>Specificity</strong></h4><p>如果在CSS源码中，一个出现更早的规则生效了，这意味着它有更高的specificity。之前也有提到过，一个类选择器比起元素选择器有更高的权重。当然，我们只针对那些重复的属性而言，即两个选择器中都有的属性才会被高specificity的重写。</p>
+<p>一个选择器的specificity总值，可以用以下四个量来计算：</p>
+<ul>
+<li><strong>Thousands</strong>：行内样式</li>
+<li><strong>Hundreds</strong>: id selector</li>
+<li><strong>Tens</strong>: class selector，attribute selector, or pseudo-class</li>
+<li><strong>Ones</strong>: element selector or pseudo-element</li>
+</ul>
+<p><strong>例子</strong>：<br><img src="https://cdn.jsdelivr.net/gh/Lemon-XXL/images/img/specificity.png" alt="example"></p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* specificity: 0101 */</span>
+<span class="token selector"><span class="token id">#outer</span> a </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* specificity: 0201 */</span>
+<span class="token selector"><span class="token id">#outer</span> <span class="token id">#inner</span> a </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* specificity: 0104 */</span>
+<span class="token selector"><span class="token id">#outer</span> div ul li a </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* specificity: 0113 */</span>
+<span class="token selector"><span class="token id">#outer</span> div ul <span class="token class">.nav</span> a </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* specificity: 0024 */</span>
+<span class="token selector">div div li<span class="token pseudo-class">:nth-child(2)</span> a<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">10</span>px solid black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* specificity: 0023 */</span>
+<span class="token selector">div li<span class="token pseudo-class">:nth-child(2)</span> a<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">10</span>px dashed black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* specificity: 0033 */</span>
+<span class="token selector">div div <span class="token class">.nav</span><span class="token pseudo-class">:nth-child(2)</span> a<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">10</span>px double black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">a </span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> <span class="token number">40</span>px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+    <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">10</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">ul </span><span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">li </span><span class="token punctuation">{</span>
+    <span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>outer<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inner<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>One<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Two<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="important"><a href="#important" class="headerlink" title="!important"></a><strong>!important</strong></h4><p><strong>!important</strong>很特殊，可以无视之前的所有计算，但在使用时要仔细一些。<br><img src="https://cdn.jsdelivr.net/gh/Lemon-XXL/images/img/important.png" alt="!important"></p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token id">#winning</span> </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.better</span> </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> none <span class="token important">!important</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>better<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This is a paragraph.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>better<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>winning<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>One selector to rule them all!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>有冲突的声明会按下面的顺序进行使用，后者可以覆盖前者：</p>
+<ol>
+<li>Declarations in user agent style sheets(比如，浏览器的默认样式)</li>
+<li>Normal declarations in user style sheets(用户设置的自定义样式)</li>
+<li>Normal declarations in author style sheets(网页开发者设置的样式)</li>
+<li>Important declarations in author style sheets</li>
+<li>Important declarations in user style sheets</li>
+</ol>
 
             </div>
             <hr/>
@@ -510,7 +616,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lemon-xxl.github.io/2020/12/08/css02/">http://lemon-xxl.github.io/2020/12/08/css02/</a>
+                    <a href="http://lemon-xxl.github.io/2020/12/10/css02/">http://lemon-xxl.github.io/2020/12/10/css02/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -596,7 +702,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2020/12/08/css02/">
+                <a href="/2020/12/10/css02/">
                     <div class="card-image">
                         
                         
@@ -613,7 +719,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-10
                             </span>
                         <span class="publish-author">
                             
