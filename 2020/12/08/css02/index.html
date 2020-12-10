@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="css学习笔记01 —— CSS如何工作, Chestnut">
+    <meta name="keywords" content="css学习笔记02 —— 层叠（级联）和继承, Chestnut">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>css学习笔记01 —— CSS如何工作 | Chestnut</title>
+    <title>css学习笔记02 —— 层叠（级联）和继承 | Chestnut</title>
     <link rel="icon" type="image/png" href="/medias/mylogo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">css学习笔记01 —— CSS如何工作</h1>
+                    <h1 class="description center-align post-title">css学习笔记02 —— 层叠（级联）和继承</h1>
                 </div>
             </div>
         </div>
@@ -414,7 +414,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-07
+                    2020-12-08
                 </div>
                 
 
@@ -430,48 +430,63 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="CSS工作过程"><a href="#CSS工作过程" class="headerlink" title="CSS工作过程"></a><strong>CSS工作过程</strong></h3><p>当浏览器显示一个文档的时候，一定会把文档内容和样式信息结合起来。<br>浏览器加载web页面的简略过程：</p>
-<ol>
-<li>浏览器加载HTML</li>
-<li>浏览器把HTML转化为DOM(<em>Document Object Model</em>)</li>
-<li>浏览器获取HTML链接的多数资源，如嵌入式的图像和视频，以及CSS。之后回处理JavaScript</li>
-<li>浏览器解析获取到的CSS，并根据选择器类型把不同的规则分类到不同的“桶”里。根据选择器，确定DOM中的节点应用哪种规则，并且给它们添加样式。这个中间过程叫渲染树</li>
-<li>在应用规则之后，渲染树会被放到对应的地方</li>
-<li>显示在屏幕上</li>
-</ol>
-<p><img src="https://media.prod.mdn.mozit.cloud/attachments/2015/10/14/11781/ab96f980498d7c46fe26f6df06b9acfc/rendering.svg" alt="CSS如何工作"></p>
-<h3 id="关于DOM"><a href="#关于DOM" class="headerlink" title="关于DOM"></a><strong>关于DOM</strong></h3><p>DOM是树状结构，标记语言里的每个元素、属性、文本块在树状结构里都是一个DOM节点。</p>
-<p>以下面的HTML代码为例：</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
-  Let's use:
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Cascading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Style<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Sheets<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在DOM中，&lt;p&gt;元素对应的节点就是父节点，它的子节点就是一个文本节点和三个与&lt;span&gt;元素对应的节点。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">P
-├─ <span class="token string">"Let's use:"</span>
-├─ SPAN
-<span class="token operator">|</span>  └─ <span class="token string">"Cascading"</span>
-├─ SPAN
-<span class="token operator">|</span>  └─ <span class="token string">"Style"</span>
-└─ SPAN
-   └─ <span class="token string">"Sheets"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>将CSS应用到DOM</p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">span </span><span class="token punctuation">{</span>
-  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid black<span class="token punctuation">;</span>
-  <span class="token property">background-color</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="当浏览器遇到无法识别的CSS"><a href="#当浏览器遇到无法识别的CSS" class="headerlink" title="当浏览器遇到无法识别的CSS"></a><strong>当浏览器遇到无法识别的CSS</strong></h3><ul>
-<li>遇到无法识别的属性或属性值，忽略当前的声明，移动到下一条声明</li>
-<li>遇到无法识别的选择器，忽略当前的整个规则，移动到下一个选择器</li>
+                <h3 id="冲突规则"><a href="#冲突规则" class="headerlink" title="冲突规则"></a><strong>冲突规则</strong></h3><p><strong>CSS</strong> 表示 <strong>Cascading Style Sheets</strong>（层叠样式表）<br>当有两条规则都可能应用于同一个元素时，cascade和specificity是决定使用那条规则的机制。</p>
+<p>另一个重要的概念是inheritance。一些CSS属性会默认继承当前元素的父元素所设置的值，而有些CSS属性则不会。</p>
+<h3 id="cascade"><a href="#cascade" class="headerlink" title="cascade"></a><strong>cascade</strong></h3><p>Stylesheets <strong>cascade</strong> (样式表层叠) —— CSS规则的顺序很重要。<br>当应用两个具有相同specificity的规则时，在CSS中最后出现的会被采用。</p>
+<h3 id="specificity"><a href="#specificity" class="headerlink" title="specificity"></a><strong>specificity</strong></h3><p>Specificity是当出现多条拥有不同选择器的但仍作用域同一个元素的规则时，浏览器如何来决定应用哪条规则。</p>
+<ul>
+<li>元素选择器的特异性较低，因为它会选择页面中所有该类型的元素，所以元素选择器的得分较低</li>
+<li>类选择器的特异性更高，因为它只会选择页面中某个具体class属性的元素，所以它的得分更高</li>
 </ul>
-<p><strong>例子：</strong></p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span> </span><span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">500</span>px<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">50</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>一些旧的浏览器不支持calc()，则会忽略第二条声明，采用像素形式。<br>而新的浏览器会解析像素形式的声明，但随后便会把它重写为使用calc()的那条。</p>
+<p>下面的代码最终的页面效果是显示一个红色的标题。</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.main-heading</span> </span><span class="token punctuation">{</span> 
+    <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token selector">h1 </span><span class="token punctuation">{</span> 
+    <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main-heading<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This is my heading.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="inheritance"><a href="#inheritance" class="headerlink" title="inheritance"></a><strong>inheritance</strong></h3><p>某些设置在父元素中的CSS属性，会被它们的子元素所继承，而某些属性则不会。</p>
+<p>比如<strong>color</strong>和<strong>font-family</strong>这两个属性，如果你在某个元素上设置了上述属性，那么该元素内的所有元素也会拥有相同的color和font-family属性，除非你直接在内部元素上设置不用的颜色和字体值。</p>
+<p>一些不会被继承的属性：width、margin、padding、border……</p>
+<h4 id="inheritance的控制"><a href="#inheritance的控制" class="headerlink" title="inheritance的控制"></a><strong>inheritance的控制</strong></h4><p>CSS提供了四个通用的属性值来控制inheritance。每个CSS属性都接受这些值。</p>
+<ul>
+<li><strong>inherit</strong>：继承父元素的属性</li>
+<li><strong>initial</strong>：设为该属性的初始值</li>
+<li><strong>unset</strong>：将属性设置为它的自然值，话句话说，如果这个属性本身是自然继承的，unset就等价于inherit，否则就等价于initial。</li>
+</ul>
+<p><strong>小疑问</strong>：natural value 和 default value的区别</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">body </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.my-class-1</span> a </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.my-class-2</span> a </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.my-class-3</span> a </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Default <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-class-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Inherit the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-class-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Reset the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-class-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Unset the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+    <li>Default <a href="#">link</a> color</li>
+    <li class="my-class-1">Inherit the <a href="#">link</a> color</li>
+    <li class="my-class-2">Reset the <a href="#">link</a> color</li> 
+    <li class="my-class-3">Unset the <a href="#">link</a> color</li>
+</ul>
+
+<p>CSS的速记属性<strong>all</strong></p>
 
             </div>
             <hr/>
@@ -497,7 +512,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lemon-xxl.github.io/2020/12/07/css01/">http://lemon-xxl.github.io/2020/12/07/css01/</a>
+                    <a href="http://lemon-xxl.github.io/2020/12/08/css02/">http://lemon-xxl.github.io/2020/12/08/css02/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -578,9 +593,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/12/08/css02/">
                     <div class="card-image">
@@ -598,9 +614,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -613,6 +629,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -631,31 +648,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/11/06/code1106/">
+                <a href="/2020/12/07/css01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="刷题笔记">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="css学习笔记01 —— CSS如何工作">
                         
-                        <span class="card-title">刷题笔记</span>
+                        <span class="card-title">css学习笔记01 —— CSS如何工作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记录一下日常刷题的小笔记
+                            CSS学习笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%88%B7%E9%A2%98%E6%97%A5%E5%B8%B8/" class="post-category">
-                                    刷题日常
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
@@ -665,12 +682,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%97%A5%E5%B8%B8%E5%88%B7%E9%A2%98/">
-                        <span class="chip bg-color">日常刷题</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
