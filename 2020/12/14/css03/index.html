@@ -451,6 +451,7 @@
 <span class="token class">.special</span> </span><span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> 
 <span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
 <h4 id="选择器的类型"><a href="#选择器的类型" class="headerlink" title="选择器的类型"></a><strong>选择器的类型</strong></h4><ul>
 <li><p><strong>Type, class, and ID slectors</strong>:</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*Type selector： 以HTML元素为目标*/</span>
@@ -459,12 +460,121 @@
 <span class="token selector"><span class="token class">.box</span> </span><span class="token punctuation">{</span> <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">/*ID selector*/</span>
 <span class="token selector"><span class="token id">#unique</span> </span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>Type selector: 类型选择器也叫标签名选择器(tag name slector)或元素选择器(element selector)。</p>
+</li>
+<li><p>Universal selector: 用*表示，它选择了文档中的所有元素。使用这个也可以使代码更易阅读。</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*这个选择器很容易和下面的混淆*/</span>
+<span class="token comment" spellcheck="true">/*第一个选择器希望在&lt;article>的所有后代元素中，找到那些是它们父元素的第一个孩子的元素*/</span>
+<span class="token selector">article <span class="token pseudo-class">:first-child</span> </span><span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/*第二个选择器则是选择了那些是其他元素的第一个子元素的&lt;article>元素*/</span>
+<span class="token selector">article<span class="token pseudo-class">:first-child</span> </span><span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/*为了便于理解，可以把第一个选择器改写成以下形式：*/</span>
+<span class="token selector">article *<span class="token pseudo-class">:first-child</span> </span><span class="token punctuation">{</span> 
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Class selector: 以’.’号开头。</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*针对特定元素的类*/</span>
+<span class="token selector">h1<span class="token class">.highlight</span> </span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/*针对具有多个类的元素*/</span>
+<span class="token selector"><span class="token class">.notebox</span> </span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">4</span>px solid <span class="token hexcode">#666</span><span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">.5</span>em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.notebox.warning</span> </span><span class="token punctuation">{</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>notebox<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    This is an informational note.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>notebox warning<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    This note shows a warning.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>ID selector: 以’#’开头，用法和类选择器相似。但是在一个页面中，一个id只能使用一次，且一个元素只能有一个id。</li>
+</ul>
+</li>
+</ul>
 </li>
 <li><p><strong>Attribute selectors</strong></p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*选择一个元素中的特定属性*/</span>
 <span class="token selector">a<span class="token attribute">[title]</span> </span><span class="token punctuation">{</span> <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">/*选择一个带有特殊值的属性*/</span>
 <span class="token selector">a[href="https://example<span class="token class">.com</span>"] </span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>Presence and value selector：</p>
+<table>
+<thead>
+<tr>
+<th align="center">选择器</th>
+<th align="center">举例</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[attr]</td>
+<td align="center">a[title]</td>
+<td align="center">匹配有attr属性的元素</td>
+</tr>
+<tr>
+<td align="center">[attr=value]</td>
+<td align="center">a[href=”<a href="https://example.com&quot;]">https://example.com&quot;]</a></td>
+<td align="center">匹配attr属性值恰好是value的元素</td>
+</tr>
+<tr>
+<td align="center">[attr~=value]</td>
+<td align="center">p[class~=”special”]</td>
+<td align="center">匹配那些attr属性值恰好是value或者属性值列表中含有value的元素</td>
+</tr>
+<tr>
+<td align="center">[attr</td>
+<td align="center">=value]</td>
+<td align="center">div[lang</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Substring matching selectors：</p>
+<table>
+<thead>
+<tr>
+<th align="center">选择器</th>
+<th align="center">举例</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[attr^=value]</td>
+<td align="center">li[class^=”box-“]</td>
+<td align="center">匹配那些attr属性值以value开头的元素</td>
+</tr>
+<tr>
+<td align="center">[attr$=value]</td>
+<td align="center">li[class$=”-box”]</td>
+<td align="center">匹配那些attr属性值以value结尾的元素</td>
+</tr>
+<tr>
+<td align="center">[attr*=value]</td>
+<td align="center">li[class*=”box”]</td>
+<td align="center">匹配那些attr属性中含有value的元素</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>大写敏感：如果希望在匹配属性值时大小写不敏感，可以在闭合中括号之前加一个’i’。</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">li<span class="token attribute">[class^="a" i]</span> </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
 </li>
 <li><p><strong>pseudo-classes and pseudo-elements</strong></p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*在元素的某个特定状态下应用样式*/</span>
@@ -474,6 +584,7 @@
 <span class="token comment" spellcheck="true">/*为元素选择器，只选择了某个元素的特定部分*/</span>
 <span class="token comment" spellcheck="true">/* ::first-line  值会选择元素中第一行文本*/</span>
 <span class="token selector">p<span class="token pseudo-element">::first-line</span> </span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- </p>
 </li>
 <li><p><strong>Combinators</strong></p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*通过组合一些选择器来确定文档中的目标元素*/</span>
@@ -482,6 +593,7 @@
 <span class="token selector">article > p </span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
+<hr>
 <h4 id="常用的选择器"><a href="#常用的选择器" class="headerlink" title="常用的选择器"></a><strong>常用的选择器</strong></h4><table>
 <thead>
 <tr>
