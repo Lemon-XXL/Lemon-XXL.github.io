@@ -537,9 +537,9 @@
 <td align="center">匹配那些attr属性值恰好是value或者属性值列表中含有value的元素</td>
 </tr>
 <tr>
-<td align="center">[attr</td>
-<td align="center">=value]</td>
-<td align="center">div[lang</td>
+<td align="center">[attr|=value]</td>
+<td align="center">div[lang|=”zh”]</td>
+<td align="center">匹配那些attr属性值恰好是value或者属性值以value开头且后面紧跟一个连字符’-‘</td>
 </tr>
 </tbody></table>
 </li>
@@ -569,7 +569,7 @@
 </tr>
 </tbody></table>
 </li>
-<li><p>大写敏感：如果希望在匹配属性值时大小写不敏感，可以在闭合中括号之前加一个’i’。</p>
+<li><p>大小写敏感：如果希望在匹配属性值时大小写不敏感，可以在闭合中括号之前加一个’i’。</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector">li<span class="token attribute">[class^="a" i]</span> </span><span class="token punctuation">{</span>
     <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -584,13 +584,45 @@
 <span class="token comment" spellcheck="true">/*为元素选择器，只选择了某个元素的特定部分*/</span>
 <span class="token comment" spellcheck="true">/* ::first-line  值会选择元素中第一行文本*/</span>
 <span class="token selector">p<span class="token pseudo-element">::first-line</span> </span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- </p>
+<ul>
+<li><p>pseudo-class：用于选择处于特定状态的元素。 形式 —— <em>:pseudo-class-name</em></p>
+</li>
+<li><p>pseudo-element: 形式 —— <em>::pseudo-e  lement-name</em></p>
+</li>
+<li><p>用::before和::after生成内容：</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span><span class="token pseudo-element">::before</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"This should show before the other content."</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.box</span><span class="token pseudo-element">::after</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" ➥"</span>
+<span class="token punctuation">}</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
 </li>
 <li><p><strong>Combinators</strong></p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*通过组合一些选择器来确定文档中的目标元素*/</span>
 <span class="token comment" spellcheck="true">/*以下例子选择了&lt;article>元素中直接子段落元素*/</span>
 <span class="token comment" spellcheck="true">/* '>' 子运算符*/</span>
 <span class="token selector">article > p </span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>Descendant combinator 后代选择器：</p>
+<p>用一个单空格表示。</p>
+<p><code>body article p</code></p>
+</li>
+<li><p>Child combinator 子选择器：</p>
+<p>用&gt;表示，选中的都是直接子元素。</p>
+<p><code>article &gt; p</code></p>
+</li>
+<li><p>Adjacent sibling combinator 相邻选择器：</p>
+<p>用+表示，下面的例子就选择了所有在&lt;p&gt;右侧的&lt;img&gt;。</p>
+<p><code>p + img</code></p>
+</li>
+<li><p>General sibling combinator 同侧选择器：</p>
+<p>用~表示，它可以选择同层的元素，即使没有直接相邻</p>
+<p><code>p ~ img</code></p>
+</li>
+</ul>
 </li>
 </ul>
 <hr>
